@@ -14,6 +14,8 @@
         <input type="email" name="email" id="email">
         <label for="date">Date:</label>
         <input type="date" name="date" id="date">
+        <label for="dateInput">Date Input:</label>
+        <input type="text" name="dateInput" id="dateInput">
         <input type="submit" value="Submit">
     </form>
 </body>

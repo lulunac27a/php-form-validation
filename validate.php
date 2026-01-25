@@ -8,8 +8,8 @@
 <body>
     <h1>Validation Result</h1>
     <?php
-    $name = $email = $date = "";
-    $nameErr = $emailErr = $dateErr = "";
+    $name = $email = $date = $dateInput = "";
+    $nameErr = $emailErr = $dateErr = $dateInputErr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["name"])) {
             $nameErr = "Name is required";
@@ -29,6 +29,10 @@
             $dateErr = "Date is required";
         } else {
             $date = htmlspecialchars($_POST["date"]);
+            $dateTimestamp = strtotime($dateInput);
+            if ($dateTimestamp === false) {
+                $dateInputErr = "Invalid date format";
+            }
         }
     }
     echo "<p>Name: $name</p>";
@@ -43,6 +47,11 @@
     if ($dateErr) {
         echo "<p style='color:red;'>$dateErr</p>";
     }
+    echo "<p>Date Input: $dateInput</p>";
+    if ($dateInputErr) {
+        echo "<p style='color:red;'>$dateInputErr</p>";
+    }
+
     ?>
 </body>
 
