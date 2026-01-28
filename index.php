@@ -16,6 +16,10 @@
         <input type="date" name="date" id="date">
         <label for="dateInput">Date Input:</label>
         <input type="text" name="dateInput" id="dateInput">
+        <label for="time">Time:</label>
+        <input type="time" name="time" id="time">
+        <label for="timeInput">Time Input:</label>
+        <input type="text" name="timeInput" id="timeInput">
         <input type="submit" value="Submit">
     </form>
 </body>

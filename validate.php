@@ -34,6 +34,16 @@
                 $dateInputErr = "Invalid date format";
             }
         }
+
+        if (empty($_POST["time"])) {
+            $timeErr = "Time is required";
+        } else {
+            $time = htmlspecialchars($_POST["time"]);
+            $timeTimestamp = strtotime($timeInput);
+            if ($timeTimestamp === false) {
+                $timeInputErr = "Invalid time format";
+            }
+        }
     }
     echo "<p>Name: $name</p>";
     if ($nameErr) {
