@@ -8,8 +8,8 @@
 <body>
     <h1>Validation Result</h1>
     <?php
-    $name = $email = $date = $dateInput = "";
-    $nameErr = $emailErr = $dateErr = $dateInputErr = "";
+    $name = $email = $date = $dateInput = $time = $timeInput = $datetimeInput = $datetimeLocalInput = $month = $week = $number = $range = $color = "";
+    $nameErr = $emailErr = $dateErr = $dateInputErr = $timeErr = $timeInputErr = $datetimeInputErr = $datetimeLocalInputErr = $monthErr = $weekErr = $numberErr = $rangeErr = $colorErr = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (empty($_POST["name"])) {
             $nameErr = "Name is required";
@@ -44,6 +44,48 @@
                 $timeInputErr = "Invalid time format";
             }
         }
+
+        if (empty($_POST["datetimeInput"])) {
+            $datetimeInputErr = "Datetime Input is required";
+        } else {
+            $datetimeInput = htmlspecialchars($_POST["datetimeInput"]);
+        }
+
+        if (empty($_POST["datetimeLocalInput"])) {
+            $datetimeLocalInputErr = "Datetime Local Input is required";
+        } else {
+            $datetimeLocalInput = htmlspecialchars($_POST["datetimeLocalInput"]);
+        }
+
+        if (empty($_POST["month"])) {
+            $monthErr = "Month is required";
+        } else {
+            $month = htmlspecialchars($_POST["month"]);
+        }
+
+        if (empty($_POST["week"])) {
+            $weekErr = "Week is required";
+        } else {
+            $week = htmlspecialchars($_POST["week"]);
+        }
+
+        if (empty($_POST["number"])) {
+            $numberErr = "Number is required";
+        } else {
+            $number = htmlspecialchars($_POST["number"]);
+        }
+
+        if (empty($_POST["range"])) {
+            $rangeErr = "Range is required";
+        } else {
+            $range = htmlspecialchars($_POST["range"]);
+        }
+
+        if (empty($_POST["color"])) {
+            $colorErr = "Color is required";
+        } else {
+            $color = htmlspecialchars($_POST["color"]);
+        }
     }
     echo "<p>Name: $name</p>";
     if ($nameErr) {
@@ -61,7 +103,42 @@
     if ($dateInputErr) {
         echo "<p style='color:red;'>$dateInputErr</p>";
     }
-
+    echo "<p>Time: $time</p>";
+    if ($timeErr) {
+        echo "<p style='color:red;'>$timeErr</p>";
+    }
+    echo "<p>Time Input: $timeInput</p>";
+    if ($timeInputErr) {
+        echo "<p style='color:red;'>$timeInputErr</p>";
+    }
+    echo "<p>Datetime Input: $datetimeInput</p>";
+    if ($datetimeInputErr) {
+        echo "<p style='color:red;'>$datetimeInputErr</p>";
+    }
+    echo "<p>Datetime Local Input: $datetimeLocalInput</p>";
+    if ($datetimeLocalInputErr) {
+        echo "<p style='color:red;'>$datetimeLocalInputErr</p>";
+    }
+    echo "<p>Month: $month</p>";
+    if ($monthErr) {
+        echo "<p style='color:red;'>$monthErr</p>";
+    }
+    echo "<p>Week: $week</p>";
+    if ($weekErr) {
+        echo "<p style='color:red;'>$weekErr</p>";
+    }
+    echo "<p>Number: $number</p>";
+    if ($numberErr) {
+        echo "<p style='color:red;'>$numberErr</p>";
+    }
+    echo "<p>Range: $range</p>";
+    if ($rangeErr) {
+        echo "<p style='color:red;'>$rangeErr</p>";
+    }
+    echo "<p>Color: $color</p>";
+    if ($colorErr) {
+        echo "<p style='color:red;'>$colorErr</p>";
+    }
     ?>
 </body>
 
