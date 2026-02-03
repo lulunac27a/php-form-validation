@@ -103,6 +103,12 @@
             $color = htmlspecialchars($_POST["color"]);
         }
     }
+    if ($invalidInputs > 0) {
+        echo "<p style='color:red;'>Invalid inputs: $invalidInputs";
+    }
+    if ($invalidInputFormats > 0) {
+        echo "<p style='color:red;'>Invalid input formats: $invalidInputFormats";
+    }
     echo "<p>Name: $name</p>";
     if ($nameErr) {
         echo "<p style='color:red;'>$nameErr</p>";
