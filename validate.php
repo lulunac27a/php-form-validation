@@ -8,24 +8,24 @@
 <body>
     <h1>Validation Result</h1>
     <?php
-    $name = $email = $date = $dateInput = $time = $timeInput = $datetimeInput = $datetimeLocalInput = $month = $week = $number = $range = $color = "";
-    $invalidInputs = 0;
-    $invalidInputFormats = 0;
-    $nameErr = $emailErr = $dateErr = $dateInputErr = $timeErr = $timeInputErr = $datetimeInputErr = $datetimeLocalInputErr = $monthErr = $weekErr = $numberErr = $rangeErr = $colorErr = "";
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (empty($_POST["name"])) {
-            $nameErr = "Name is required";
-            $invalidInputs++;
+    $name = $email = $date = $dateInput = $time = $timeInput = $datetimeInput = $datetimeLocalInput = $month = $week = $number = $range = $color = ""; //initialize variable input
+    $invalidInputs = 0; //number of invalid inputs
+    $invalidInputFormats = 0; //number of invalid input formats
+    $nameErr = $emailErr = $dateErr = $dateInputErr = $timeErr = $timeInputErr = $datetimeInputErr = $datetimeLocalInputErr = $monthErr = $weekErr = $numberErr = $rangeErr = $colorErr = ""; //initialize error variables
+    if ($_SERVER["REQUEST_METHOD"] == "POST") { //check if form is submitted using POST method
+        if (empty($_POST["name"])) { //if input value is empty
+            $nameErr = "Name is required"; //set error message
+            $invalidInputs++; //increase invalid input count
         } else {
-            $name = htmlspecialchars($_POST["name"]);
+            $name = htmlspecialchars($_POST["name"]); //display entered input value
         }
 
         if (empty($_POST["email"])) {
             $emailErr = "Email is required";
             $invalidInputs++;
-        } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Invalid email format";
-            $invalidInputFormats++;
+        } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) { //if input value is not valid format
+            $emailErr = "Invalid email format"; //set error message
+            $invalidInputFormats++; //increase invalid input format count
         } else {
             $email = htmlspecialchars($_POST["email"]);
         }
@@ -104,14 +104,14 @@
         }
     }
     if ($invalidInputs > 0) {
-        echo "<p style='color:red;'>Invalid inputs: $invalidInputs";
+        echo "<p style='color:red;'>Invalid inputs: $invalidInputs"; //display number of invalid inputs
     }
     if ($invalidInputFormats > 0) {
-        echo "<p style='color:red;'>Invalid input formats: $invalidInputFormats";
+        echo "<p style='color:red;'>Invalid input formats: $invalidInputFormats"; //display number of invalid input formats
     }
-    echo "<p>Name: $name</p>";
+    echo "<p>Name: $name</p>"; //display entered input value
     if ($nameErr) {
-        echo "<p style='color:red;'>$nameErr</p>";
+        echo "<p style='color:red;'>$nameErr</p>"; //display error message
     }
     echo "<p>Email: $email</p>";
     if ($emailErr) {
