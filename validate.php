@@ -115,7 +115,7 @@
     }
     echo "<p>Email: $email</p>";
     if ($emailErr) {
-        echo "<p style='color:red;'>$emailErrs</p>";
+        echo "<p style='color:red;'>$emailErr</p>";
     }
     echo "<p>Date: $date</p>";
     if ($dateErr) {
